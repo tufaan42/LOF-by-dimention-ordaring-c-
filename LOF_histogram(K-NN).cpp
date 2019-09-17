@@ -212,7 +212,7 @@ void _new(){
         lrd.clear();
         k_dis.clear();
         maskidx.clear();
-        for(int i = 0; i < 5037; i++){
+        for(int i = 0; i < n; i++){
                 kNNs[i].clear();
         }
         for(int i = 0; i < 1024; i++){
@@ -221,18 +221,18 @@ void _new(){
 }
 
 void work(){
-        int i,j,mask;
+        int i,j,mask,dim;
         n = _I();//number of points
         make_arr();
-        mask = _I();
+        dim = _I();
         for(i = 0; i < n; i++){
-                for(j = 0; j < 10; j++){
+                for(j = 0; j < dim; j++){
                         ar[j][i] = _D();
                 }
         }
         vector<double> zz;
         //cout<<ar[j-1][i-1]<<endl;
-        for(mask = 511; mask < 512; mask++){
+        for(mask = 408; mask < 409; mask++){
                 _new();
                 //cout<<"dd1"<<endl;
                 build_maskid(mask);//building relevent indexes
@@ -256,7 +256,7 @@ void work(){
                 sort(lof.begin(),lof.end(),cmp2);
                 //cout<<"dd7"<<endl;
                 cout<<"m = "<<mask<<endl;
-                if(mask == 511){
+                if(mask == 408){
                         for(i = 0; i < 10; i++ ) cout<<lof[i].idx<<endl;
                 }
                 vector<double> test_o_l;
@@ -295,7 +295,7 @@ void work(){
                         vv++;
                 }
                 //cout<<"ddx"<<endl;
-                double quality_fac = 0;
+                double quality_fac = 0.0;
                 //if(mask == 3) cout<<histogram[ arr[vx-vv] ].size()<<endl;
 //                for(i = 0; i < k_dis.size(); i++){
 //                        cout<<k_dis[i]<<endl;
@@ -304,6 +304,7 @@ void work(){
                 for(i = 0; i < ddq.size(); i++){
                         quality_fac += lof[ ddq[i] ].dis*k_dis[ lof[ ddq[i] ].idx ];
                 }
+                ddq.clear();
                 zz.push_back(quality_fac);
                 //cout<<"dd13"<<endl;
                 //zz.push_back(it->second);
@@ -317,14 +318,44 @@ void work(){
                 }
                 printf("%.6f\n",zz[i]);
         }
-        cout<<mxidx<<endl;
+        cout<<mxxx<<" "<<mxidx<<endl;
         //av/=5.0;
         //cout<<av<<endl;
 }
 
+bool vis_bin[12];
+
+int cal_v(){
+        return rand()%100;
+}
+
+int bin_t_i(string x){
+        int i,sz;
+        sz = x.size();
+        int k = 0;
+//        for(i = sz-1; i > -1; i--){
+//                if(x[i] == '1')
+//                x[i] - '0';
+//        }
+
+}
+
+void build_bina(){
+        int i,j;
+        string a;
+//        for(i = 0; i < 12 ;i++){
+//                a.clear();
+//                for(i = 0; i < 12; i++) a += '0';
+//                for(j = i+1; j < 12; j++){
+//                        a[j] = '1';
+//
+//                }
+//        }
+}
+
 
 int main(){
-        freopen("rdata1.txt","r",stdin);
+        freopen("rdata0.txt","r",stdin);
         //freopen("out.txt","w",stdout);
         work();
         return 0;
