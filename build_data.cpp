@@ -15,10 +15,11 @@ int main()
 //                sprintf(name, "lista%d.txt", cont);
 //                freopen(name,"w",stdout);
 //        }
-        freopen("data2.txt","r",stdin);
-        freopen("rdata1.txt","w",stdout);
-        int n;
-        cin>>n;
+        freopen("data0.txt","r",stdin);
+        freopen("rdata12.txt","w",stdout);
+        int n,dim;
+        cin>>n>>dim;
+        cout<<n<<" "<<dim<<"\n";
         getchar();
         int i,j;
         for(i = 0; i < n; i++){
@@ -31,7 +32,7 @@ int main()
                         if(ar[i][j] == ','){
                                 cout<<temp;
                                 k++;
-                                if(k == 9) {
+                                if(k == dim) {
                                         cout<<endl;break;
                                 }
                                 cout<<" "; temp.clear();
